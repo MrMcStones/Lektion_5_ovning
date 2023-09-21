@@ -9,31 +9,46 @@ public class Main {
         Player player = new Player();
         boolean isPlaying = true;
 
+        System.out.println("Insert your name please");
+        String result =sc.nextLine();
+
+        player.name = result;
+
+        System.out.println("Player #1: " + player.name);
+
+        System.out.println("Write a number of loops you'd like to create");
+        int loop = sc.nextInt();
+        sc.nextLine();
+
+        player.loop = loop;
+
+        for (int i = 1; i <= loop; i++) {
+            System.out.println("Loop# " +i);
+        }
+
         do {
-            System.out.println("Insert your name please");
-            String result =sc.nextLine();
+            System.out.println("Choose and action");
+            System.out.println("'1': Throw");
+            System.out.println("'stop': Close application");
 
-            player.name = result;
+            String choice = sc.nextLine();
 
-            System.out.println("Write a number you'd like to loop");
-            int loop = sc.nextInt();
-
-            sc.nextLine();
-
-            player.loop = loop;
-
-            System.out.println("Player #1: " + player.name);
-
-            for (int i = 1; i <= loop; i++) {
-                System.out.println("Loop# " +i);
+            switch (choice.toLowerCase()) {
+                case "1":
+                    System.out.println("Throwing!");
+                    break;
+                case "stop":
+                    isPlaying = false;
+                    break;
+                default:
+                    System.out.println("Wrong input");
             }
 
-            System.out.println("Write 'stop' to stop application");
-            String stop = sc.nextLine();
-
-            if (stop.equalsIgnoreCase("stop")) {
+            /*if (stop.equalsIgnoreCase("stop")) {
                 isPlaying = false;
             }
+
+             */
 
         } while (isPlaying);
 
