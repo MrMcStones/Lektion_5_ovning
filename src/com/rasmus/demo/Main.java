@@ -1,5 +1,6 @@
 package com.rasmus.demo;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Main {
@@ -16,9 +17,22 @@ public class Main {
 
         System.out.println("Player #1: " + player.name);
 
-        System.out.println("Write a number of loops you'd like to create");
-        int loop = sc.nextInt();
-        sc.nextLine();
+        int loop = 0;
+
+        if (isPlaying) {
+            System.out.println("Write a number of loops you'd like to create");
+
+        } while (isPlaying) {
+
+            try {
+                loop = sc.nextInt();
+                sc.nextLine();
+                break;
+            } catch (InputMismatchException e) {
+                System.out.println("Invalid input, please enter a number");
+                sc.nextLine();
+            }
+        }
 
         player.loop = loop;
 
